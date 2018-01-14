@@ -4,18 +4,18 @@ import "github.com/shopspring/decimal"
 
 // Block ...
 type Block struct {
-	index        int32
-	timestamp    int64
-	transactions []Transaction
-	proof        int32
-	parent       string
+	Index        int32
+	Timestamp    int64
+	Transactions []Transaction
+	Proof        int32
+	Parent       string
 }
 
 // Transaction ...
 type Transaction struct {
-	sender    string
-	recipient string
-	amount    decimal.Decimal
+	Sender    string
+	Recipient string
+	Amount    decimal.Decimal
 }
 
 // Blockchain ...
@@ -32,6 +32,11 @@ func (b *Blockchain) addBlock() error {
 func (b *Blockchain) addTransaction(transaction Transaction) (int32, error) {
 	b.transactions = append(b.transactions, transaction)
 	return b.lastBlock + 1, nil
+}
+
+// Run ...
+func (b *Blockchain) Run() error {
+	return nil
 }
 
 // New ...
