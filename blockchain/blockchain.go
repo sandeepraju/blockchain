@@ -1,6 +1,7 @@
 package blockchain
 
 import (
+	"fmt"
 	"math/rand"
 	"sync"
 	"time"
@@ -65,7 +66,10 @@ func (b *Blockchain) Mine() (*Block, error) {
 
 func (b *Blockchain) unsafeMine() (*Block, error) {
 	previousBlock := b.chain[len(b.chain)-1]
-	nextProof := b.proofOfWork(previousBlock.Proof)
+	nextProof, err := b.proofOfWork(previousBlock.Proof)
+	if err != nil {
+		return nil, err
+	}
 
 	transaction := Transaction{
 		Sender:    "0", // signifies that this transaction is for mining
@@ -74,7 +78,7 @@ func (b *Blockchain) unsafeMine() (*Block, error) {
 	}
 	b.unsafeAddTransaction(transaction)
 
-	previousHash, err := Hash(previousBlock)
+	previousHash, err := HashBlock(previousBlock)
 	if err != nil {
 		return nil, err
 	}
@@ -94,9 +98,32 @@ func (b *Blockchain) unsafeMine() (*Block, error) {
 	return &newBlock, nil
 }
 
-func (b *Blockchain) proofOfWork(previousProof uint64) uint64 {
-	// TODO: implement this
-	return 0
+func (b *Blockchain) proofOfWork(previousProof uint64) (uint64, error) {
+	// Simple Proof of Work Algorithm:
+	//   - Find a number p' such that hash(pp') contains leading 4 zeroes, where p is the previous p'
+	//   - p is the previous proof, and p' is the new proof
+	proof := uint64(0)
+	for {
+		ok, err := b.verifyProof(previousProof, proof)
+		if err != nil {
+			return 0, err
+		}
+
+		// TODO: refactor this; looks really odd!
+		if ok {
+			return proof, nil
+		}
+
+		proof++
+	}
+}
+
+func (b *Blockchain) verifyProof(previousProof uint64, currentProof uint64) (bool, error) {
+	hash, err := Hash([]byte(fmt.Sprintf("%d:%d", previousProof, currentProof)))
+	if err != nil {
+		return false, err
+	}
+	return (hash[:4] == "0000"), nil
 }
 
 // New ...
