@@ -19,7 +19,7 @@ type Server struct {
 // NewServer ...
 func NewServer() *Server {
 	return &Server{
-		bc: blockchain.NewWithGenesis(),
+		bc: blockchain.DefaultBlockchain,
 	}
 }
 

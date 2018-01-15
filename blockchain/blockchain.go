@@ -2,14 +2,19 @@ package blockchain
 
 import (
 	"math/rand"
+	"sync"
 	"time"
 
 	"github.com/shopspring/decimal"
 )
 
+// DefaultBlockchain ...
+var DefaultBlockchain *Blockchain
+
 func init() {
 	// Seed the rand
 	rand.Seed(time.Now().Unix())
+	DefaultBlockchain = NewWithGenesis()
 }
 
 // Block ...
@@ -30,16 +35,17 @@ type Transaction struct {
 
 // Blockchain ...
 type Blockchain struct {
+	lock         sync.RWMutex
 	lastBlock    uint64
 	chain        []Block
 	transactions []Transaction
 }
 
-func (b *Blockchain) addBlock() error {
-	return nil
-}
+// AddTransaction ...
+func (b *Blockchain) AddTransaction(transaction Transaction) (uint64, error) {
+	b.lock.Lock()
+	defer b.lock.Unlock()
 
-func (b *Blockchain) addTransaction(transaction Transaction) (uint64, error) {
 	b.transactions = append(b.transactions, transaction)
 	return b.lastBlock + 1, nil
 }
