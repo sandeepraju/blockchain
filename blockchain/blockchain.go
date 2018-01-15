@@ -34,11 +34,6 @@ func (b *Blockchain) addTransaction(transaction Transaction) (int32, error) {
 	return b.lastBlock + 1, nil
 }
 
-// Run ...
-func (b *Blockchain) Run() error {
-	return nil
-}
-
 // New ...
 func New(genesis Block) *Blockchain {
 	bc := Blockchain{}

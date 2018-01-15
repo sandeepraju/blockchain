@@ -1,6 +1,6 @@
 package blockchain
 
-// ** Utils **
-func hash(block Block) string {
+// Hash ...
+func Hash(block Block) string {
 	return ""
 }
