@@ -74,7 +74,10 @@ func (b *Blockchain) unsafeMine() (*Block, error) {
 	}
 	b.unsafeAddTransaction(transaction)
 
-	previousHash := Hash(previousBlock)
+	previousHash, err := Hash(previousBlock)
+	if err != nil {
+		return nil, err
+	}
 
 	newBlock := Block{
 		Index:        uint64(len(b.chain)),
