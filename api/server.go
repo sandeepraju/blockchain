@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/sandeepraju/blockchain/blockchain"
+
 	"github.com/urfave/negroni"
 
 	"github.com/gorilla/mux"
@@ -11,11 +13,14 @@ import (
 
 // Server ...
 type Server struct {
+	bc *blockchain.Blockchain
 }
 
 // NewServer ...
 func NewServer() *Server {
-	return &Server{}
+	return &Server{
+		bc: blockchain.NewWithGenesis(),
+	}
 }
 
 // Start ...

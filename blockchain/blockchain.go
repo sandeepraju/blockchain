@@ -1,13 +1,23 @@
 package blockchain
 
-import "github.com/shopspring/decimal"
+import (
+	"math/rand"
+	"time"
+
+	"github.com/shopspring/decimal"
+)
+
+func init() {
+	// Seed the rand
+	rand.Seed(time.Now().Unix())
+}
 
 // Block ...
 type Block struct {
-	Index        int32
+	Index        uint64
 	Timestamp    int64
 	Transactions []Transaction
-	Proof        int32
+	Proof        uint64
 	Parent       string
 }
 
@@ -20,7 +30,7 @@ type Transaction struct {
 
 // Blockchain ...
 type Blockchain struct {
-	lastBlock    int32
+	lastBlock    uint64
 	chain        []Block
 	transactions []Transaction
 }
@@ -29,7 +39,7 @@ func (b *Blockchain) addBlock() error {
 	return nil
 }
 
-func (b *Blockchain) addTransaction(transaction Transaction) (int32, error) {
+func (b *Blockchain) addTransaction(transaction Transaction) (uint64, error) {
 	b.transactions = append(b.transactions, transaction)
 	return b.lastBlock + 1, nil
 }
@@ -38,4 +48,18 @@ func (b *Blockchain) addTransaction(transaction Transaction) (int32, error) {
 func New(genesis Block) *Blockchain {
 	bc := Blockchain{}
 	return &bc
+}
+
+// NewWithGenesis ...
+func NewWithGenesis() *Blockchain {
+	// Generate a genesis block
+	genesis := Block{
+		Index:        0,
+		Timestamp:    time.Now().Unix(),
+		Transactions: make([]Transaction, 0),
+		Proof:        rand.Uint64(),
+		Parent:       "",
+	}
+
+	return New(genesis)
 }
