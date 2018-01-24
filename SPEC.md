@@ -33,3 +33,13 @@
     "LockTime": ""
 }
 ```
+
+## Blockchain
+
+```json
+{
+    "Kind": "Blockchain",
+    "Version": "v0.0.1-dev",
+    "Blocks": []
+}
+```
