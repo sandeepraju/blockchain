@@ -27,6 +27,7 @@
 - Go LevelDB (or [BuntDB](https://github.com/tidwall/buntdb))?
 - YAML config file
 - We need a simple client to act as a wallet for proof of concept
+- Actor based design?
 
 ## Overview
 
