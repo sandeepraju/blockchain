@@ -19,6 +19,11 @@
 - Go LevelDB (or [BuntDB](https://github.com/tidwall/buntdb))?
 - YAML config file
 
+## Other design considerations
+
+- Lightweight vs Full nodes
+- Storing unspents
+
 ## Overview
 
 ### When the node starts up
