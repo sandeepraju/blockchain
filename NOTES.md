@@ -3,8 +3,9 @@
 ## [Design] Open Questions
 
 - How do we get peer list?
+- How to seed the network? -- can there be only one node?! who starts the genesis block and coinbase transaction.
 - HTTP API (in lieu of Bitcoin RPC)?
-- How do we persist the blockchain to disk?
+- How do we persist the blockchain to disk? (periodic backups?)
 - Proof of work?
 - Signing & Checksum
 - Conflict resolution
@@ -13,16 +14,19 @@
 - Support for standard bitcoin address
 - Key format?
 - JSON based data serialization?
+- Node wallet to save mined earnings (?)
+- Should there be a limit for mempool (unconfirmed transactions)? Why is there a limit?
+- How do we handle blocks that don't make it to the main chain (_'side chain'_ blocks)
+- Lightweight vs Full nodes
+- Storing unspents
+- How to work out the difficulty & target for our toy implementation?
+- Change in block creation fee
 
 ## [Implementation] Open Questions
 
 - Go LevelDB (or [BuntDB](https://github.com/tidwall/buntdb))?
 - YAML config file
-
-## Other design considerations
-
-- Lightweight vs Full nodes
-- Storing unspents
+- We need a simple client to act as a wallet for proof of concept
 
 ## Overview
 
