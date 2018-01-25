@@ -57,3 +57,8 @@
 ### When a block verification request comes in
 
 -
+
+## Thoughts
+
+- Simpler alternative to (`ScriptSig` and `ScriptPubKey`) validate transactions.
+- Transaction lock is super fancy -- do we need it?
