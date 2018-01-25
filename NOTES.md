@@ -29,6 +29,7 @@
 - We need a simple client to act as a wallet for proof of concept
 - Actor based design?
 - HTTP vs gRPC for interfacing?
+- Max heap for transaction prioritization
 
 ## Overview
 
