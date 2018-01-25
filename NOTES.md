@@ -4,7 +4,6 @@
 
 - How do we get peer list?
 - How to seed the network? -- can there be only one node?! who starts the genesis block and coinbase transaction.
-- HTTP API (in lieu of Bitcoin RPC)?
 - How do we persist the blockchain to disk? (periodic backups?)
 - Proof of work?
 - Signing & Checksum
@@ -21,6 +20,7 @@
 - Storing unspents
 - How to work out the difficulty & target for our toy implementation?
 - Change in block creation fee
+- How do we store UTXOs (unspent transaction outputs)
 
 ## [Implementation] Open Questions
 
@@ -28,6 +28,7 @@
 - YAML config file
 - We need a simple client to act as a wallet for proof of concept
 - Actor based design?
+- HTTP vs gRPC for interfacing?
 
 ## Overview
 
