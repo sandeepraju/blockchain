@@ -1,0 +1,4 @@
+package pkg
+
+const TOTAL_C = 100000000 // 100,000,000 (100M)
+const NANO_C = 1000000000 // 1,000,000,000 (1B)
