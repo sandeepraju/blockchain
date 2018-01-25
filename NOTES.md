@@ -62,3 +62,19 @@
 
 - Simpler alternative to (`ScriptSig` and `ScriptPubKey`) validate transactions.
 - Transaction lock is super fancy -- do we need it?
+
+
+## Things to learn
+
+- How are transactions signed?
+- Implementation details on PoW
+- Should blocks be signed?
+- How are chain conflicts resolved?
+- What are transaction confirmations?
+- What is the use of Merkle trees?
+
+
+## More (Non core questions)
+
+- How are unspents merged? (is it even possible?)
+-
