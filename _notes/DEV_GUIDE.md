@@ -1,7 +1,5 @@
 # Developer Guide
 
-Ref: https://bitcoin.org/en/developer-guide#block-chain-overview
-
 - The transactions are paired and hashed until one single transaction remains (this is the merkle root).
 - Merkle root is stored in the block header.
 - Each block also stores the hash of the previous block's header (and thus the chain)
@@ -16,3 +14,9 @@ Ref: https://bitcoin.org/en/developer-guide#block-chain-overview
 - For any transaction (payment) to be valid and be accepted by the blockchain, it must only use UTXOs as the input.
 - Ignoring the coinbase transactions, if the value of transactions output exceeds its input, the transaction will be rejected.
 - If the inputs exceed the value of outputs, any difference in value maybe claimed as a transaction fee by the miner (who creates the block containing the transaction)
+
+## References
+
+- https://bitcoin.org/en/developer-guide#block-chain-overview
+- https://bitcoin.org/bitcoin.pdf
+- 
