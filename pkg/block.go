@@ -11,7 +11,7 @@ const (
 type BlockHeader struct {
 	Version    string
 	PrevBlock  string // Hash of previous block
-	MerkleRoot string // Hash of merkle root
+	MerkleRoot string // Merkle hash tree root of transactions
 	Time       time.Time
 	Target     uint32
 	Nonce      uint32
@@ -20,7 +20,7 @@ type BlockHeader struct {
 // Block ...
 type Block struct {
 	BlockHeader
-	Transactions []Transaction // First transaction in this is the transaction to gift the miner
+	Transactions []Transaction
 }
 
 // IsGenesis ...
