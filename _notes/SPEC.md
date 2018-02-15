@@ -13,12 +13,7 @@
         "Target": 0,
         "Nonce": 0
     },
-    "Transactions": [
-        {
-            "Kind": "Transaction",
-
-        }
-    ]
+    "Transactions": [...]
 }
 ```
 

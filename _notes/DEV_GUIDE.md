@@ -19,4 +19,3 @@
 
 - https://bitcoin.org/en/developer-guide#block-chain-overview
 - https://bitcoin.org/bitcoin.pdf
-- 
